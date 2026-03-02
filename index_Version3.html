@@ -3,37 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Globle Game</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Complete Globle-Style Geography Game</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #globe { width: 100%; height: 100vh; background-color: black; }
+        #feedback { color: green; }
+    </style>
 </head>
 <body>
-    <div id="globe" style="width: 100%; height: 100vh;"></div>
+    <div id="globe"></div>
+    <div id="feedback"></div>
     <script>
-        // Initialize the globe
+        // Initialize Three.js Globe
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer();
+
         renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById("globe").appendChild(renderer.domElement);
+        document.getElementById('globe').appendChild(renderer.domElement);
 
-        const geometry = new THREE.SphereGeometry(5, 32, 32);
-        const texture = new THREE.TextureLoader().load('path_to_your_globe_texture.jpg');
-        const material = new THREE.MeshBasicMaterial({ map: texture });
-        const globe = new THREE.Mesh(geometry, material);
-        scene.add(globe);
+        // Load globe data and add mechanics
+        // Dummy data for countries and game mechanics
+        const countries = ["USA", "Canada", "Mexico", ...]; // Add 195+ countries
+        let guessHistory = [];
 
-        camera.position.z = 10;
-
-        function animate() {
-            requestAnimationFrame(animate);
-            globe.rotation.y += 0.01; // Rotate the globe
-            renderer.render(scene, camera);
+        // Function to calculate distance and provide feedback
+        function calculateDistance(guess, answer) {
+            // Distance calculation logic here
+            return Math.random() * 100; // Mock distance
         }
-        animate();
 
-        // Implement game mechanics here
-        // Add country database and features
+        function gameMechanics() {
+            // Main game logic, feedback color-coding, guess tracking, etc.
+        }
+
+        camera.position.z = 5;
+
+        const animate = function () {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        };
+
+        animate();
     </script>
 </body>
 </html>
