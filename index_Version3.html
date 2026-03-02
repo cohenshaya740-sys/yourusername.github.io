@@ -3,18 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Globle-Style Game</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Globle Game</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f0f0f0; }
+        #gameContainer { width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; }
+        canvas { border: 1px solid black; }
+    </style>
 </head>
 <body>
-    <h1>Welcome to the Globle-Style Game!</h1>
-    <p>Test your geography skills in this challenging game.</p>
     <div id="gameContainer">
-        <p>Guess the country!</p>
-        <input type="text" id="guessInput" placeholder="Enter country name">
-        <button id="submitGuess">Submit</button>
-        <div id="feedback"></div>
+        <canvas id="globleCanvas"></canvas>
     </div>
-    <script src="script.js"></script>
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({canvas: document.getElementById('globleCanvas')});
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const countries = {/* country database */};
+
+        function initGame() {
+            // Game mechanics initialization
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            // Update game logic here
+            renderer.render(scene, camera);
+        }
+
+        initGame();
+        animate();
+    </script>
 </body>
 </html>
